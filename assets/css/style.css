@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC&display=swap");
+
+:root {
+    --cor-amarelo: #ffcc03;
+    --cor-azul-claro: #c4d7e0;
+    --cor-azul-escuro: #3c59a5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: var(--cor-azul-escuro);
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#pokedex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    align-items: center;
+}
+
+div.pokedex_container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+div.borda_cima {
+    border-bottom: 2rem solid #000;
+}
+
+div#pokedex_cima-esquerda {
+    width: 100%;
+    max-width: 450px;
+    height: 450px;
+    background-color: rgb(250, 3, 3);
+    border-top-left-radius: 100%;
+}
+div#pokedex_cima-direita {
+    width: 100%;
+    max-width: 450px;
+    height: 450px;
+    background-color: rgb(250, 3, 3);
+    border-top-right-radius: 100%;
+}
+
+div#pokedex_meio {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border: 2rem solid #000;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+button#pokedex_abrir {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-family: "Anton", sans-serif;
+}
+
+section#pokedex_apresentacao {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    gap: 3rem 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #000;
+    border: 1px solid #0000;
+}
+
+/* Inicio do cards dos pokemons */
+
+div.pokedex_cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 30%;
+    min-width: 215px;
+    padding: 2.5rem;
+    border: 5px double var(--cor-amarelo);
+    border-radius: 1rem;
+    box-shadow: 0px 0px 15px var(--cor-amarelo);
+}
+
+h3.pokedex_titulo {
+    font-size: 3.5rem;
+}
+
+p.pokedex_numero {
+    font-size: 2.5rem;
+}
+
+figure {
+    background-color: var(--cor-azul-claro);
+    border-radius: 100%;
+}
+
+img.pokedex_img {
+    width: 100%;
+    max-width: 200px;
+    min-width: 100px;
+}
+
+div.tipos_container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1.7rem 0;
+}
+
+div.pokedex_tipos {
+    background-color: yellowgreen;
+    padding: 1rem;
+    border-radius: 100%;
+}
+
+.bg_color {
+    background: linear-gradient(180deg, #9bcc50 50%, #9bcc50 50%);
+}
+
+p.pokedex_tipos-pokemos {
+    font-size: 2.2rem;
+}
+
+p.pokedex_tipos-pokemos:first-letter {
+    text-transform: uppercase;
+}
+
+p.pokedex_descricao {
+    font-size: 1.9rem;
+    line-height: 1.5;
+    font-family: "Cormorant SC", serif;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Final do cards dos pokemons */
+
+div.borda_baixo {
+    border-top: 2rem solid #000;
+}
+
+div#pokedex_baixo-esquerda {
+    width: 100%;
+    max-width: 450px;
+    height: 450px;
+    background-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 100%;
+}
+
+div#pokedex_baixo-direita {
+    width: 100%;
+    max-width: 450px;
+    height: 450px;
+    background-color: rgb(255, 255, 255);
+    border-bottom-right-radius: 100%;
+}
