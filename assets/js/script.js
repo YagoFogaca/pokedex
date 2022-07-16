@@ -1,6 +1,6 @@
 const baseAPI = {
     page: "0",
-    url_pokemon: `https://pokeapi.co/api/v2/pokemon?offset=${this.page}&limit=20`,
+    url_pokemon: `https://pokeapi.co/api/v2/pokemon?offset=${this.page}&limit=100`,
     // https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0.
 };
 
@@ -33,7 +33,15 @@ async function buscaAPI() {
 
         const descricaoData = await descricaoResp.json();
 
-        const personagemDescricao = descricaoData.flavor_text_entries[1].flavor_text;
+        // const personagemDescricao = descricaoData.flavor_text_entries[1].flavor_text;
+        let personagemDescricao = "";
+
+        for (let i = 0; i <= 5; i++) {
+            if (descricaoData.flavor_text_entries[i].language.name == "en") {
+                personagemDescricao = descricaoData.flavor_text_entries[i].flavor_text;
+                break;
+            }
+        }
 
         const personagemDescricaoFix = personagemDescricao.replace("", "");
 
@@ -75,15 +83,74 @@ async function buscaAPI() {
 
                             <div class="tipos_container">
                                 <div class="pokedex_tipos">
-                                    <p class="pokedex_tipos-pokemos">${tipo[0].type.name}</p>
+                                    <p class="pokedex_tipos-pokemos" id="tipo_1">${tipo[0].type.name}</p>
                                 </div>
                                 <div class="pokedex_tipos">
-                                    <p class="pokedex_tipos-pokemos">${tipo[1].type.name}</p>
+                                    <p class="pokedex_tipos-pokemos" id="tipo_2">${tipo[1].type.name}</p>
                                 </div>
                             </div>
                             <p class="pokedex_descricao">${personagemDescricaoFix}</p>
                         </div>`
             );
+        }
+        const divsTipos = document.querySelectorAll(".pokedex_tipos");
+        for (let i = 0; i < divsTipos.length; i++) {
+            switch (divsTipos[i].innerText.trim()) {
+                case "grass":
+                    divsTipos[i].classList.add("bg_color-glass");
+                    break;
+                case "poison":
+                    divsTipos[i].classList.add("bg_color-poison");
+                    break;
+                case "fire":
+                    divsTipos[i].classList.add("bg_color-fire");
+                    break;
+                case "flying":
+                    divsTipos[i].classList.add("bg_color-flying");
+                    break;
+                case "water":
+                    divsTipos[i].classList.add("bg_color-water");
+                    break;
+                case "bug":
+                    divsTipos[i].classList.add("bg_color-bug");
+                    break;
+                case "normal":
+                    divsTipos[i].classList.add("bg_color-normal");
+                    break;
+                case "electric":
+                    divsTipos[i].classList.add("bg_color-electric");
+                    break;
+                case "ground":
+                    divsTipos[i].classList.add("bg_color-ground");
+                    break;
+                case "fairy":
+                    divsTipos[i].classList.add("bg_color-fairy");
+                    break;
+                case "fighting":
+                    divsTipos[i].classList.add("bg_color-fighting");
+                    break;
+                case "psychic":
+                    divsTipos[i].classList.add("bg_color-psychic");
+                    break;
+                case "rock":
+                    divsTipos[i].classList.add("bg_color-rock");
+                    break;
+                case "steel":
+                    divsTipos[i].classList.add("bg_color-steel");
+                    break;
+                case "ice":
+                    divsTipos[i].classList.add("bg_color-ice");
+                    break;
+                case "ghost":
+                    divsTipos[i].classList.add("bg_color-ghost");
+                    break;
+                case "dragon":
+                    divsTipos[i].classList.add("bg_color-dragon");
+                    break;
+                case "dark":
+                    divsTipos[i].classList.add("bg_color-dark");
+                    break;
+            }
         }
     });
 
