@@ -162,9 +162,25 @@ buscaAPI();
 const btn = document.querySelector("#pokedex_abrir");
 
 btn.addEventListener("click", function () {
+    // buscaAPI();
+
+    document.querySelector("#container_apresentacao").style.height = "995px";
+
+    document.querySelector("#container_apresentacao").style.backgroundColor = "var(--cor-preto-claro)";
+
+    document.querySelector("#pokedex_inicar").style.display = "flex";
+
     document.querySelector("#pokedex_apresentacao").style.display = "flex";
 
-    document.querySelector("#pokedex_meio").style.top = "270px";
-
-    btn.innerText = "";
+    btn.style.display = "none";
 });
+
+// const types = [
+//     'normal', 'fire', 'fighting',
+//     'water', 'flying', 'grass',
+//     'poison', 'electric', 'ground',
+//     'psychic', 'rock', 'ice',
+//     'bug', 'dragon', 'ghost',
+//     'dark', 'steel', 'fairy'
+// ];
+// Passar no for uma função async

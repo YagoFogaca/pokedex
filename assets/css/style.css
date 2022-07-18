@@ -6,6 +6,9 @@
     --cor-amarelo: #ffcc03;
     --cor-azul-claro: #c4d7e0;
     --cor-azul-escuro: #3c59a5;
+    --cor-vinho: #c30d24;
+    --cor-vinho-escuro: #300d0c;
+    --cor-preto-claro: #2d3436;
 }
 
 * {
@@ -17,74 +20,69 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
     background-color: var(--cor-azul-escuro);
 }
-
-main {
-    width: 100%;
+section#container_pokedex {
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    justify-content: center;
     align-items: center;
 }
 
-section#pokedex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    max-width: 900px;
-    align-items: center;
+div#pokedex_cima {
+    width: 95%;
+    height: 150px;
+    background-color: var(--cor-vinho);
+    border: 1rem solid var(--cor-vinho-escuro);
+    border-bottom: 1rem solid #000;
+    border-top-left-radius: 5rem;
+    border-top-right-radius: 5rem;
 }
 
-div.pokedex_container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-div.borda_cima {
-    border-bottom: 2rem solid #000;
-}
-
-div#pokedex_cima-esquerda {
-    width: 100%;
-    max-width: 450px;
-    height: 450px;
-    background-color: rgb(250, 3, 3);
-    border-top-left-radius: 100%;
-}
-div#pokedex_cima-direita {
-    width: 100%;
-    max-width: 450px;
-    height: 450px;
-    background-color: rgb(250, 3, 3);
-    border-top-right-radius: 100%;
-}
-
-div#pokedex_meio {
-    width: 200px;
+div#pokedex_baixo {
+    width: 95%;
     height: 200px;
+    background-color: var(--cor-vinho);
+    border: 1rem solid var(--cor-vinho-escuro);
+    border-top: 1rem solid #000;
+    border-bottom-left-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+main#container_apresentacao {
+    width: 95%;
+    height: 100px;
+    background-color: #111;
+    border-left: 1rem solid var(--cor-vinho-escuro);
+    border-right: 1rem solid var(--cor-vinho-escuro);
+}
+
+button.btn_pokedex {
+    width: 100px;
+    height: 100px;
+    border: 5px solid #000;
     border-radius: 100%;
-    border: 2rem solid #000;
-    position: absolute;
-    z-index: 1;
-    background-color: #fff;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-}
-
-button#pokedex_abrir {
     font-size: 2.5rem;
     text-transform: uppercase;
     cursor: pointer;
-    border: none;
     background-color: transparent;
     font-family: "Anton", sans-serif;
 }
+
+button#pokedex_inicar {
+    display: none;
+}
+
+/* Apos busca na API -- Criação dos cards */
 
 section#pokedex_apresentacao {
     display: none;
@@ -92,27 +90,22 @@ section#pokedex_apresentacao {
     justify-content: space-evenly;
     align-items: stretch;
     gap: 3rem 1.5rem;
-    width: 100%;
-    max-width: 1000px;
+    height: 80vh;
     padding: 2rem;
-    background-color: #fff;
-    box-shadow: 0px 0px 15px #000;
-    border: 1px solid #0000;
+    overflow-y: scroll;
 }
-
-/* Inicio do cards dos pokemons */
 
 div.pokedex_cards {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    width: 30%;
-    min-width: 215px;
-    padding: 2.5rem;
+    width: 400px;
+    background-color: #f0f0f0;
+    padding: 1.5rem;
     border: 5px double var(--cor-amarelo);
     border-radius: 1rem;
-    box-shadow: 0px 0px 15px var(--cor-amarelo);
+    box-shadow: 0px 0px 10px var(--cor-amarelo);
 }
 
 h3.pokedex_titulo {
@@ -240,24 +233,9 @@ p.pokedex_descricao {
     text-transform: uppercase;
 }
 
-/* Final do cards dos pokemons */
-
-div.borda_baixo {
-    border-top: 2rem solid #000;
-}
-
-div#pokedex_baixo-esquerda {
-    width: 100%;
-    max-width: 450px;
-    height: 450px;
-    background-color: rgb(255, 255, 255);
-    border-bottom-left-radius: 100%;
-}
-
-div#pokedex_baixo-direita {
-    width: 100%;
-    max-width: 450px;
-    height: 450px;
-    background-color: rgb(255, 255, 255);
-    border-bottom-right-radius: 100%;
+@media (max-width: 320px) {
+    section#pokedex_apresentacao {
+        height: 75vh;
+        padding: 0.5rem;
+    }
 }

@@ -9,23 +9,16 @@
         <title>Pokedéx</title>
     </head>
     <body>
-        <main>
-            <section id="pokedex">
-                <div class="pokedex_container borda_cima">
-                    <div id="pokedex_cima-esquerda"></div>
-                    <div id="pokedex_cima-direita"></div>
-                </div>
-                <div id="pokedex_meio">
-                    <button id="pokedex_abrir">Abri Pokebola</button>
-                </div>
+        <section id="container_pokedex">
+            <div id="pokedex_cima"></div>
+            <main id="container_apresentacao">
                 <section id="pokedex_apresentacao"></section>
-                <div class="pokedex_container borda_baixo">
-                    <div id="pokedex_baixo-esquerda"></div>
-                    <div id="pokedex_baixo-direita"></div>
-                </div>
-            </section>
-        </main>
-
+            </main>
+            <div class="desenho_pokedex" id="pokedex_baixo">
+                <button id="pokedex_abrir" class="btn_pokedex">Abri</button>
+                <button id="pokedex_inicar" class="btn_pokedex">Ligar</button>
+            </div>
+        </section>
         <script src="./assets/js/script.js"></script>
     </body>
 </html>
