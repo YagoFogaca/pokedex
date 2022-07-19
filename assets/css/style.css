@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
 
 :root {
     --cor-amarelo: #ffcc03;
@@ -16,7 +16,7 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Kanit", serif;
 }
 
 body {
@@ -42,7 +42,7 @@ div#pokedex_cima {
 
 div#pokedex_baixo {
     width: 95%;
-    height: 200px;
+    height: 600px;
     background-color: var(--cor-vinho);
     border: 1rem solid var(--cor-vinho-escuro);
     border-top: 1rem solid #000;
@@ -78,10 +78,6 @@ button.btn_pokedex {
     font-family: "Anton", sans-serif;
 }
 
-button#pokedex_inicar {
-    display: none;
-}
-
 /* Apos busca na API -- Criação dos cards */
 
 section#pokedex_apresentacao {
@@ -93,6 +89,13 @@ section#pokedex_apresentacao {
     height: 80vh;
     padding: 2rem;
     overflow-y: scroll;
+}
+div#menu_pokedex {
+    display: none;
+
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 div.pokedex_cards {
@@ -108,12 +111,20 @@ div.pokedex_cards {
     box-shadow: 0px 0px 10px var(--cor-amarelo);
 }
 
+div.pokedex_cards-cabecalho {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
 h3.pokedex_titulo {
     font-size: 3.5rem;
 }
 
 p.pokedex_numero {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
 }
 
 figure {
@@ -141,7 +152,7 @@ div.tipos_container {
     border-radius: 100%;
 }
 
-div.bg_color-glass {
+div.bg_color-grass {
     background: linear-gradient(180deg, #9bcc50 50%, #9bcc50 50%);
 }
 
@@ -227,7 +238,6 @@ p.pokedex_tipos-pokemos:first-letter {
 p.pokedex_descricao {
     font-size: 1.9rem;
     line-height: 1.5;
-    font-family: "Cormorant SC", serif;
     font-weight: 600;
     text-align: center;
     text-transform: uppercase;
@@ -237,5 +247,13 @@ p.pokedex_descricao {
     section#pokedex_apresentacao {
         height: 75vh;
         padding: 0.5rem;
+    }
+}
+@media (max-width: 280px) {
+    div.pokedex_cards {
+        width: 200px;
+    }
+    p.pokedex_tipos-pokemos {
+        font-size: 1.2rem;
     }
 }
