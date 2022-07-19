@@ -1,18 +1,20 @@
-const baseAPI = {
-    page: "0",
-    url_pokemon: `https://pokeapi.co/api/v2/pokemon?offset=${this.page}&limit=10`,
-    // https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0.
+// let offset = 0;
+let paginacao = {
+    offset: 0,
+    botao_voltar: 1,
+    botao_avancar: 2,
 };
 
-async function buscaAPI() {
-    const resp = await fetch(baseAPI.url_pokemon);
+async function buscaAPI(offset) {
+    const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=50`);
 
     const data = await resp.json();
 
     return data;
 }
-async function criaElementos() {
-    const data = await buscaAPI();
+
+async function criaElementos(offset) {
+    const data = await buscaAPI(offset);
 
     data.results.forEach(async function (item) {
         const respPoke = await fetch(item.url);
@@ -119,31 +121,95 @@ async function criaElementos() {
             "steel",
             "fairy",
         ];
-
+        console.clear();
         divsTipos.forEach(async function (item) {
             for (let i of tipos) {
                 if (item.innerText.trim() === i) {
                     item.classList.add(`bg_color-${i}`);
+
+                    console.log("entrou aqui");
                     break;
                 }
             }
         });
     });
 }
-criaElementos();
+criaElementos(paginacao.offset);
 
-const btn = document.querySelector("#pokedex_abrir");
+const btnInicar = document.querySelector("#pokedex_abrir");
 
-btn.addEventListener("click", function () {
+const btnVoltarPage = document.querySelector("#pokedex_page-voltar");
+
+const btnAvancarPage = document.querySelector("#pokedex_page-avancar");
+
+const btnMenu = document.querySelector("#pokedex_menu");
+
+const menu = document.querySelector("#menu");
+
+btnInicar.addEventListener("click", function () {
     document.querySelector("#container_apresentacao").style.height = "995px";
 
-    document.querySelector("#container_apresentacao").style.backgroundColor = "var(--cor-preto-claro)";
+    document.querySelector("#container_apresentacao").style.backgroundColor = "var(--cor-branco)";
 
     document.querySelector("#pokedex_apresentacao").style.display = "flex";
 
-    document.querySelector("#pokedex_menu").style.display = "flex";
-    document.querySelector("#pokedex_page-voltar").style.display = "flex";
-    document.querySelector("#pokedex_page-avancar").style.display = "flex";
+    btnMenu.style.display = "flex";
 
-    btn.style.display = "none";
+    btnVoltarPage.style.display = "flex";
+
+    btnAvancarPage.style.display = "flex";
+
+    btnInicar.style.display = "none";
+});
+
+btnMenu.addEventListener("click", function () {
+    if (menu.style.display == "flex") {
+        menu.style.display = "none";
+        btnMenu.innerText = "Menu";
+    } else {
+        menu.style.display = "flex";
+        btnMenu.innerText = "X";
+    }
+});
+
+btnAvancarPage.addEventListener("click", function () {
+    const pokedexCards = document.querySelectorAll(".pokedex_cards");
+
+    pokedexCards.forEach(function (item) {
+        item.remove();
+    });
+
+    paginacao.botao_avancar++;
+
+    paginacao.botao_voltar++;
+
+    btnAvancarPage.innerText = paginacao.botao_avancar;
+
+    btnVoltarPage.innerText = paginacao.botao_voltar;
+
+    paginacao.offset += 100;
+
+    criaElementos(paginacao.offset);
+});
+
+btnVoltarPage.addEventListener("click", function () {
+    if (paginacao.offset != 0) {
+        const pokedexCards = document.querySelectorAll(".pokedex_cards");
+
+        pokedexCards.forEach(function (item) {
+            item.remove();
+        });
+
+        paginacao.botao_avancar--;
+
+        paginacao.botao_voltar--;
+
+        btnAvancarPage.innerText = paginacao.botao_avancar;
+
+        btnVoltarPage.innerText = paginacao.botao_voltar;
+
+        paginacao.offset -= 100;
+
+        criaElementos(paginacao.offset);
+    }
 });
