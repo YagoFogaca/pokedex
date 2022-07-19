@@ -141,7 +141,9 @@ btn.addEventListener("click", function () {
 
     document.querySelector("#pokedex_apresentacao").style.display = "flex";
 
-    document.querySelector("#menu_pokedex").style.display = "flex";
+    document.querySelector("#pokedex_menu").style.display = "flex";
+    document.querySelector("#pokedex_page-voltar").style.display = "flex";
+    document.querySelector("#pokedex_page-avancar").style.display = "flex";
 
     btn.style.display = "none";
 });
