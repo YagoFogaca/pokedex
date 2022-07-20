@@ -98,11 +98,13 @@ button#pokedex_page-avancar {
 }
 
 div#menu {
-    display: none;
     width: 100vw;
     height: 500px;
-    background-color: var(--cor-amarelo);
-
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: var(--cor-branco);
+    border: 15px solid var(--cor-vinho-escuro);
     position: fixed;
     left: 0;
 }
