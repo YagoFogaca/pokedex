@@ -257,9 +257,16 @@ p.pokedex_descricao {
         height: 75vh;
         padding: 0.5rem;
     }
+    img.pokedex_img {
+        width: 150px;
+    }
+    p.pokedex_descricao {
+        font-size: 1.5rem;
+    }
     button.btn_pokedex {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
     }
 }
 @media (max-width: 280px) {

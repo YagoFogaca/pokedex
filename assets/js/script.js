@@ -1,4 +1,3 @@
-// let offset = 0;
 let paginacao = {
     offset: 0,
     botao_voltar: 1,
@@ -57,11 +56,9 @@ async function criaElementos(offset) {
                         <h3 class="pokedex_titulo">${nameUp}</h3>
                         <p class="pokedex_numero">${numero}º</p>
                     </div>
-    
                     <figure>
                         <img class="pokedex_img" src="${imagem}" alt="" />
                     </figure>
-    
                     <div class="tipos_container">
                         <div class="pokedex_tipos">
                             <p class="pokedex_tipos-pokemos">${tipo[0].type.name}</p>
@@ -121,13 +118,12 @@ async function criaElementos(offset) {
             "steel",
             "fairy",
         ];
-        console.clear();
+
         divsTipos.forEach(async function (item) {
             for (let i of tipos) {
-                if (item.innerText.trim() === i) {
+                if (item.innerText.trim().toUpperCase() === i.toUpperCase()) {
                     item.classList.add(`bg_color-${i}`);
 
-                    console.log("entrou aqui");
                     break;
                 }
             }
