@@ -1,6 +1,6 @@
 let paginacao = {
     offset: 0,
-    botao_voltar: 1,
+    botao_voltar: 0,
     botao_avancar: 2,
 };
 
@@ -24,7 +24,12 @@ async function criaElementos(offset) {
 
         const nameUp = name[0].toUpperCase() + name.substring(1);
 
-        const imagem = dataPoke.sprites.other["official-artwork"].front_default;
+        let imagem = dataPoke.sprites.other["official-artwork"].front_default;
+
+        if (imagem === null) {
+            console.log(name);
+            imagem = "./assets/img/pokemon_sem_img.png";
+        }
 
         const numero = dataPoke.id;
 
@@ -38,12 +43,9 @@ async function criaElementos(offset) {
 
         let personagemDescricao = "";
 
-        for (let i = 0; i <= 5; i++) {
+        for (let i = 0; i <= 50; i++) {
             if (descricaoData.flavor_text_entries[i].language.name == "en") {
                 personagemDescricao = descricaoData.flavor_text_entries[i].flavor_text;
-                if (personagemDescricao == "               ") {
-                    console.log("teste");
-                }
 
                 break;
             }
@@ -216,7 +218,7 @@ btnVoltarPage.addEventListener("click", function () {
 
         criaElementos(paginacao.offset);
     }
-    if (paginacao.botao_voltar === 1) {
+    if (paginacao.botao_voltar === 0) {
         console.log(paginacao.offset);
         btnVoltarPage.style.display = "none";
     }

@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
         <link rel="icon" href="./assets/img/png-clipart-pokemon-logo-pokemon-logo.ico" type="image/x-icon" />
         <link rel="stylesheet" href="./assets/css/style.css" />
         <title>Pokedéx</title>
@@ -14,8 +15,11 @@
             <main id="container_apresentacao">
                 <div id="menu">
                     <form action="">
-                        <label for="">Nome ou número:</label>
-                        <input type="text" />
+                        <label for="busca_pokemon">Nome ou número:</label>
+                        <div id="menu_busca">
+                            <input type="text" id="busca_pokemon" placeholder="" />
+                            <i class="bi bi-search"></i>
+                        </div>
                     </form>
                 </div>
                 <section id="pokedex_apresentacao"></section>
