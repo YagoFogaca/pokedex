@@ -5,7 +5,7 @@ let paginacao = {
 };
 
 async function buscaAPI(offset) {
-    const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=50`);
+    const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=100`);
 
     const data = await resp.json();
 
@@ -41,6 +41,9 @@ async function criaElementos(offset) {
         for (let i = 0; i <= 5; i++) {
             if (descricaoData.flavor_text_entries[i].language.name == "en") {
                 personagemDescricao = descricaoData.flavor_text_entries[i].flavor_text;
+                if (personagemDescricao == "               ") {
+                    console.log("teste");
+                }
 
                 break;
             }
@@ -151,8 +154,6 @@ btnInicar.addEventListener("click", function () {
 
     btnMenu.style.display = "flex";
 
-    btnVoltarPage.style.display = "flex";
-
     btnAvancarPage.style.display = "flex";
 
     btnInicar.style.display = "none";
@@ -169,6 +170,8 @@ btnMenu.addEventListener("click", function () {
 });
 
 btnAvancarPage.addEventListener("click", function () {
+    btnVoltarPage.style.display = "flex";
+
     const pokedexCards = document.querySelectorAll(".pokedex_cards");
 
     pokedexCards.forEach(function (item) {
@@ -176,6 +179,10 @@ btnAvancarPage.addEventListener("click", function () {
     });
 
     paginacao.botao_avancar++;
+
+    if (paginacao.botao_avancar === 14) {
+        btnAvancarPage.style.display = "none";
+    }
 
     paginacao.botao_voltar++;
 
@@ -187,7 +194,6 @@ btnAvancarPage.addEventListener("click", function () {
 
     criaElementos(paginacao.offset);
 });
-
 btnVoltarPage.addEventListener("click", function () {
     if (paginacao.offset != 0) {
         const pokedexCards = document.querySelectorAll(".pokedex_cards");
@@ -195,6 +201,8 @@ btnVoltarPage.addEventListener("click", function () {
         pokedexCards.forEach(function (item) {
             item.remove();
         });
+
+        btnAvancarPage.style.display = "flex";
 
         paginacao.botao_avancar--;
 
@@ -207,5 +215,9 @@ btnVoltarPage.addEventListener("click", function () {
         paginacao.offset -= 100;
 
         criaElementos(paginacao.offset);
+    }
+    if (paginacao.botao_voltar === 1) {
+        console.log(paginacao.offset);
+        btnVoltarPage.style.display = "none";
     }
 });
