@@ -4,6 +4,16 @@ let paginacao = {
     botao_avancar: 2,
 };
 
+const btnInicar = document.querySelector("#pokedex_abrir");
+
+const btnVoltarPage = document.querySelector("#pokedex_page-voltar");
+
+const btnAvancarPage = document.querySelector("#pokedex_page-avancar");
+
+const btnMenu = document.querySelector("#pokedex_menu");
+
+const menu = document.querySelector("#menu");
+
 async function buscaAPI(offset) {
     const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=100`);
 
@@ -137,16 +147,6 @@ async function criaElementos(offset) {
 }
 criaElementos(paginacao.offset);
 
-const btnInicar = document.querySelector("#pokedex_abrir");
-
-const btnVoltarPage = document.querySelector("#pokedex_page-voltar");
-
-const btnAvancarPage = document.querySelector("#pokedex_page-avancar");
-
-const btnMenu = document.querySelector("#pokedex_menu");
-
-const menu = document.querySelector("#menu");
-
 btnInicar.addEventListener("click", function () {
     document.querySelector("#container_apresentacao").style.height = "995px";
 
@@ -196,6 +196,7 @@ btnAvancarPage.addEventListener("click", function () {
 
     criaElementos(paginacao.offset);
 });
+
 btnVoltarPage.addEventListener("click", function () {
     if (paginacao.offset != 0) {
         const pokedexCards = document.querySelectorAll(".pokedex_cards");
