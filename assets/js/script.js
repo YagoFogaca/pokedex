@@ -195,7 +195,7 @@ btnBusca.addEventListener("click", async function () {
         const data = await buscaAPI(paginacao.offset, paginacao.limit);
 
         data.results.forEach(async function (item) {
-            if (item.name === buscaPokemon.value.toLowerCase()) {
+            if (item.name === buscaPokemon.value.toLowerCase().trim()) {
                 const respPoke = await fetch(item.url);
 
                 const dataPoke = await respPoke.json();
@@ -312,9 +312,14 @@ btnBusca.addEventListener("click", async function () {
                         }
                     }
                 });
+            } else if (item.name.includes(buscaPokemon.value.toLowerCase().trim()) === false) {
+                console.log("erro");
+                const erroBusca = document.querySelector("#erro_busca");
+                erroBusca.style.display = "flex";
             }
         });
     }
+    buscaPokemon.value = "";
 });
 
 btnRestaura.addEventListener("click", async function () {
