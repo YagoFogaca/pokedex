@@ -19,6 +19,8 @@ const btnBusca = document.querySelector("#busca_pokemon-botao");
 
 const btnRestaura = document.querySelector("#restaura_pokemon-botao");
 
+const erroBusca = document.querySelector("#erro_busca");
+
 async function buscaAPI(offset, limit) {
     const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
 
@@ -181,6 +183,8 @@ btnBusca.addEventListener("click", async function () {
 
     btnMenu.innerText = "Menu";
 
+    erroBusca.style.display = "none";
+
     const pokedexCards = document.querySelectorAll(".pokedex_cards");
 
     const buscaPokemon = document.querySelector("#busca_pokemon");
@@ -194,8 +198,12 @@ btnBusca.addEventListener("click", async function () {
 
         const data = await buscaAPI(paginacao.offset, paginacao.limit);
 
+        let controleBusca = false;
+
         data.results.forEach(async function (item) {
             if (item.name === buscaPokemon.value.toLowerCase().trim()) {
+                controleBusca = true;
+
                 const respPoke = await fetch(item.url);
 
                 const dataPoke = await respPoke.json();
@@ -312,9 +320,10 @@ btnBusca.addEventListener("click", async function () {
                         }
                     }
                 });
-            } else if (item.name.includes(buscaPokemon.value.toLowerCase().trim()) === false) {
-                console.log("erro");
-                const erroBusca = document.querySelector("#erro_busca");
+            } else if (
+                item.name.includes(buscaPokemon.value.toLowerCase().trim()) === false &&
+                controleBusca === false
+            ) {
                 erroBusca.style.display = "flex";
             }
         });
@@ -323,6 +332,8 @@ btnBusca.addEventListener("click", async function () {
 });
 
 btnRestaura.addEventListener("click", async function () {
+    erroBusca.style.display = "none";
+
     menu.style.display = "none";
 
     btnMenu.innerText = "Menu";
