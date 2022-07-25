@@ -320,13 +320,11 @@ btnBusca.addEventListener("click", async function () {
                         }
                     }
                 });
-            } else if (
-                item.name.includes(buscaPokemon.value.toLowerCase().trim()) === false &&
-                controleBusca === false
-            ) {
-                erroBusca.style.display = "flex";
             }
         });
+        if (controleBusca === false) {
+            erroBusca.style.display = "flex";
+        }
     }
     buscaPokemon.value = "";
 });
