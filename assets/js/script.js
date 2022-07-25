@@ -190,6 +190,10 @@ btnBusca.addEventListener("click", async function () {
     const buscaPokemon = document.querySelector("#busca_pokemon");
 
     if (buscaPokemon.value.toLowerCase() != "") {
+        btnAvancarPage.style.display = "none";
+
+        btnVoltarPage.style.display = "none";
+
         pokedexCards.forEach(function (item) {
             item.remove();
         });
@@ -325,11 +329,24 @@ btnBusca.addEventListener("click", async function () {
         if (controleBusca === false) {
             erroBusca.style.display = "flex";
         }
+    } else {
+        pokedexCards.forEach(function (item) {
+            item.remove();
+        });
+        erroBusca.style.display = "flex";
     }
     buscaPokemon.value = "";
 });
 
 btnRestaura.addEventListener("click", async function () {
+    btnAvancarPage.style.display = "flex";
+
+    if (paginacao.botao_voltar === 0) {
+        btnVoltarPage.style.display = "none";
+    } else {
+        btnVoltarPage.style.display = "flex";
+    }
+
     erroBusca.style.display = "none";
 
     menu.style.display = "none";
