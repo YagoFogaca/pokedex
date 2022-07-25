@@ -109,7 +109,7 @@ div#menu {
 }
 
 form {
-    width: 50%;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-flow: row wrap;
@@ -132,10 +132,27 @@ input#busca_pokemon {
     font-size: 1.5rem;
 }
 
-i.bi-search {
-    font-size: 2.5rem;
-    position: absolute;
-    right: 0;
+button.botao_busca {
+    display: flex;
+    align-items: baseline;
+    border: none;
+    background-color: var(--cor-amarelo);
+    font-size: 2.2rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 500ms;
+}
+
+button.botao_busca {
+    border-radius: 0.8rem;
+    background-color: #ffcd03bd;
+}
+
+i.bi-search,
+i.bi-x {
+    font-size: 2rem;
 }
 
 div.pokedex_cards {
@@ -281,6 +298,12 @@ p.pokedex_descricao {
     font-weight: 600;
     text-align: center;
     text-transform: uppercase;
+}
+@media (max-width: 768px) {
+    form {
+        flex-flow: column wrap;
+        gap: 1rem;
+    }
 }
 
 @media (max-width: 320px) {
