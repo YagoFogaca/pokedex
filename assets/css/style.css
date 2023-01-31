@@ -7,3 +7,13 @@
   --cor-preto-claro: #2d3436;
   --cor-branco: #f8f8ff;
 }
+
+#card-presentation {
+  width: 90%;
+  height: 100%;
+  margin: 0px auto;
+
+  box-shadow: 0px 0px 5px;
+  border-radius: 6px;
+  overflow-y: scroll;
+}

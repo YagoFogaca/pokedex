@@ -19,3 +19,7 @@ main {
 body {
   background-color: #1f2324d8;
 }
+
+main {
+  padding: 5px;
+}
