@@ -31,6 +31,21 @@
   max-width: 285px;
   min-width: 225px;
   height: 25%;
+  padding: 5px;
   background-color: aliceblue;
   border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-pokemon--img {
+  width: 150px;
+}
+
+.card-pokemon--name {
+  font-size: 1.9rem;
+  text-transform: uppercase;
 }
