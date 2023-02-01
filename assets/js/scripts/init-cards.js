@@ -1,8 +1,8 @@
 import { FindAllApi } from "../api/api.js";
 import { CreateCard } from "./create-card.js";
 
-export async function InitCards() {
-  const pokemonsFindAll = await FindAllApi(0, 12);
+export async function InitCards(initial) {
+  const pokemonsFindAll = await FindAllApi(initial, 25);
 
   await pokemonsFindAll.results.map(async (item) => {
     const pokemonFetch = await fetch(item.url);
