@@ -1,16 +1,28 @@
-export function InputFilter() {
-  const input = document.querySelector("input");
+import { FindAllApi } from "../api/api.js";
+import { CreateCard } from "./create-card.js";
 
-  input.addEventListener("input", () => {
-    const cards = document.querySelectorAll(".card-pokemon");
+export async function InputFilter() {
+  const input = document.querySelector("input");
+  const cards = document.querySelectorAll(".card-pokemon");
+
+  if (input.value) {
     cards.forEach((card) => {
-      if (input.value.length <= 0) {
-        card.style.display = "flex";
-      } else if (
-        !card.outerText.toLowerCase().includes(input.value.toLowerCase())
-      ) {
-        card.style.display = "none";
-      }
+      card.remove();
     });
+  }
+
+  const pokemonsFindAll = await FindAllApi(0, 10000);
+  await pokemonsFindAll.results.map(async (item) => {
+    const pokemonFetch = await fetch(item.url);
+    const pokemon = await pokemonFetch.json();
+
+    if (pokemon.name.toLowerCase().includes(input.value.toLowerCase())) {
+      let img = pokemon.sprites.other["official-artwork"].front_default;
+      if (!img) {
+        img = "./assets/img/pokemon_sem_img.png";
+      }
+
+      CreateCard(img, pokemon.name);
+    }
   });
 }
