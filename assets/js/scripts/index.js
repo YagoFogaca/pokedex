@@ -2,6 +2,10 @@ import { InitCards } from "./init-cards.js";
 import { InputFilter } from "./input-form.js";
 
 async function Machine() {
+  window.scroll({
+    behavior: "smooth",
+  });
+
   let initial = 0;
 
   const btn = document.querySelector("button");
